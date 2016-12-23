@@ -1,9 +1,7 @@
-import $ from 'jquery';
+import React from 'react';
+import { render } from 'react-dom';
+import JQueryButton from './components/JQueryButton';
+import ReactButton from './components/ReactButton';
 
-// cache the button so we don't have to
-// look for it everytime we want to manipulate it
-const $button = $('.js-button');
-
-$button.on('click', () => {
-  $button.toggleClass('success');
-});
+render(<JQueryButton />, document.getElementById('jquery-button'));
+render(<ReactButton />, document.getElementById('react-button'));
