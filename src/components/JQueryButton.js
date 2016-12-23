@@ -27,6 +27,7 @@ class JQueryButton extends Component {
   onClick() {
     this.$button.toggleClass('success');
     this.$message.toggle();
+    this.props.toggle();
   }
 
   render() {
@@ -36,6 +37,10 @@ class JQueryButton extends Component {
           jQuery Click Me
         </button>
         <h3 className="js-message" style={{ display: 'none' }}>Now you see me!</h3>
+        {
+          this.props.isActive && this.props.isSomeoneElseActive &&
+            <h3>React is active too!</h3>
+        }
       </div>
     );
   }

@@ -1,7 +1,15 @@
 import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { render } from 'react-dom';
-import JQueryButton from './components/JQueryButton';
-import ReactButton from './components/ReactButton';
+import reducer from './reducers';
+import App from './containers/App';
 
-render(<JQueryButton />, document.getElementById('jquery-button'));
-render(<ReactButton />, document.getElementById('react-button'));
+const store = createStore(reducer);
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+);

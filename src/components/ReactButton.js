@@ -10,20 +10,14 @@ class ReactButton extends Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  state = {
-    isActive: false,
-  }
-
   onClick() {
-    this.setState({
-      isActive: !this.state.isActive, // inverse the state
-    })
+    this.props.toggle();
   }
 
   render() {
     let className = 'button';
 
-    if (this.state.isActive) {
+    if (this.props.isActive) {
       className = `${className} success`;
     }
 
@@ -33,9 +27,12 @@ class ReactButton extends Component {
           React Click Me
         </button>
         {
-          /* Can control the entire component based on state with minimal effort */
-          this.state.isActive &&
+          this.props.isActive &&
             <h3>Now you see me!</h3>
+        }
+        {
+          this.props.isActive && this.props.isSomeoneElseActive &&
+            <h3>JQuery is active too!</h3>
         }
       </div>
     );
