@@ -1,4 +1,8 @@
 import { combineReducers } from 'redux';
-import button from './button';
+import common from './common';
+import movies from './movies';
 
-export default combineReducers({ button });
+export default combineReducers({
+  common,
+  movies,
+});
