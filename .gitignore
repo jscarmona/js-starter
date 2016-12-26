@@ -1,3 +1,4 @@
 /node_modules
-/public/dist
+/public/dist/*
+!/public/dist/.gitkeep
 npm-debug.log
