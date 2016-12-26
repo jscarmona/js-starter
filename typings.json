@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "immutable": "registry:dt/immutable#3.8.1+20161123163210",
+    "react": "registry:dt/react#0.14.0+20161211160957",
+    "react-dom": "registry:dt/react-dom#0.14.0+20161119154402",
+    "react-redux": "registry:dt/react-redux#4.4.0+20161124155658"
+  },
+  "globalDependencies": {
+    "axios": "registry:dt/axios#0.9.1+20161128041239",
+    "classnames": "registry:dt/classnames#0.0.0+20161113184211",
+    "jquery": "registry:dt/jquery#1.10.0+20161119044246",
+    "moment": "registry:dt/moment#2.11.1+20161010105546",
+    "redux": "registry:dt/redux#3.5.2+20160703092728",
+    "reselect": "registry:dt/reselect#2.0.2+20160510002910"
+  }
+}

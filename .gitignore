@@ -1,4 +1,5 @@
 /node_modules
 /public/dist/*
 !/public/dist/.gitkeep
+/typings
 npm-debug.log
