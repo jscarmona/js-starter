@@ -47,8 +47,8 @@ class App extends Component {
         {
           isLoading && <Spinner />
         }
-        <Hero title="Movies" subtitle="Search for any movie in the imdb database" />
         <MoviesSearchBox ref={(ref) => { this.searchBox = ref; }} search={this.fetchMovies} />
+        <Hero title="Movies" subtitle="Search for any movie in the imdb database" />
         <Movies movies={movies} term={searchTerm} total={totalMovies} find={this.fetchMovie} nextPage={this.fetchNextPage} />
         {
           selectedMovie && <MovieDetailModal movie={selectedMovie} clear={this.clearSelected} />
