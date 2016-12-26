@@ -45,15 +45,11 @@ const MovieDetail = ({ movie, clear }) => (
       <section className="section">
         <div className="container">
           <div className="columns is-mobile">
-            {
-              movie.Poster !== 'N/A' && (
-                <div className="column is-4">
-                  <figure className="image" style={{ marginBottom: '1rem' }}>
-                    <img src={movie.Poster} />
-                  </figure>
-                </div>
-              )
-            }
+            <div className="column is-4">
+              <figure className="image" style={{ marginBottom: '1rem' }}>
+                <img src={movie.Poster !== 'N/A' ? movie.Poster : 'http://placehold.it/300x466?text=Coming+Soon'} />
+              </figure>
+            </div>
             <div className="column">
               <div className="content">
                 <h1 className="title is-3">{movie.Title}</h1>

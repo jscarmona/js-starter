@@ -16,13 +16,9 @@ const Movies = ({ movies, term, find, isLoading, total, nextPage }) => (
                 onClick={() => find(movie.imdbID)}
                 style={{ cursor: 'pointer' }}
               >
-                {
-                  movie.Poster !== 'N/A' && (
-                    <figure className="image" style={{ marginBottom: '1rem' }}>
-                      <img src={movie.Poster} />
-                    </figure>
-                  )
-                }
+                <figure className="image" style={{ marginBottom: '1rem' }}>
+                  <img src={movie.Poster !== 'N/A' ? movie.Poster : 'http://placehold.it/300x466?text=Coming+Soon'} />
+                </figure>
                 <div className="content">
                   <h2 className="title is-5">{movie.Title}</h2>
                 </div>
