@@ -8,19 +8,29 @@ import {
   CLEAR_SELECTED_MOVIE,
 } from '../constants';
 
+/**
+ * The imdb api url
+ * @property {String}
+ */
 const API_URL = 'http://www.omdbapi.com';
 
+/**
+ * Clears the selected movie
+ * @returns {Function} A dispatch function
+ */
 export const clearSelectedMovie = () => ({
   type: CLEAR_SELECTED_MOVIE,
 });
 
+/**
+ * Fetch a page of movies for the search term provided.
+ * @param {String} searchTerm
+ * @param {Number} page
+ * @returns {Function} A dispatch function
+ */
 export const fetchMovies = (searchTerm, page) => (dispatch) => (
   dispatch({
-    type: [
-      MOVIES_FETCH_ALL_REQUEST,
-      MOVIES_FETCH_ALL_SUCCESS,
-      MOVIES_FETCH_ALL_ERROR,
-    ],
+    type: [MOVIES_FETCH_ALL_REQUEST, MOVIES_FETCH_ALL_SUCCESS, MOVIES_FETCH_ALL_ERROR],
     payload: {
       url: API_URL,
       params: {
@@ -32,13 +42,14 @@ export const fetchMovies = (searchTerm, page) => (dispatch) => (
   })
 );
 
+/**
+ * Fetch a single movie
+ * @param {String} imdbId
+ * @returns {Function} A dispatch function
+ */
 export const fetchMovie = (imdbId) => (dispatch) => (
   dispatch({
-    type: [
-      MOVIES_FETCH_ONE_REQUEST,
-      MOVIES_FETCH_ONE_SUCCESS,
-      MOVIES_FETCH_ONE_ERROR,
-    ],
+    type: [MOVIES_FETCH_ONE_REQUEST, MOVIES_FETCH_ONE_SUCCESS, MOVIES_FETCH_ONE_ERROR],
     payload: {
       url: API_URL,
       params: {
@@ -46,4 +57,4 @@ export const fetchMovie = (imdbId) => (dispatch) => (
       },
     },
   })
-)
+);
