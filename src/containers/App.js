@@ -10,19 +10,8 @@ import MovieDetailModal from '../components/MovieDetailModal';
 import Spinner from '../components/Spinner';
 
 class App extends Component {
-  componentDidMount() {
-    if (this.searchBox) {
-      this.searchBox.focus();
-    }
-  }
-
-  fetchMovies = (e) => {
-    const value = this.searchBox.getValue();
-
-    if (e.keyCode === 13 && value) {
-      this.props.fetchMovies(value, 1)
-        .then((data) => { this.searchBox.clearValue(); });
-    }
+  fetchMovies = (value) => {
+    return this.props.fetchMovies(value, 1);
   }
 
   fetchNextPage = () => {
@@ -47,11 +36,13 @@ class App extends Component {
         {
           isLoading && <Spinner />
         }
-        <MoviesSearchBox ref={(ref) => { this.searchBox = ref; }} search={this.fetchMovies} />
+        <MoviesSearchBox onSearch={this.fetchMovies} />
         <Hero title="Movies" subtitle="Search for any movie in the imdb database" />
         <Movies movies={movies} term={searchTerm} total={totalMovies} find={this.fetchMovie} nextPage={this.fetchNextPage} />
         {
-          selectedMovie && <MovieDetailModal movie={selectedMovie} clear={this.clearSelected} />
+          selectedMovie && (
+            <MovieDetailModal movie={selectedMovie} clear={this.clearSelected} />
+          )
         }
       </div>
     );
@@ -67,10 +58,10 @@ const mapStateToProps = (state) => ({
   selectedMovie: moviesSelectors.getSelected(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchMovies: (searchTerm, page) => dispatch(fetchMovies(searchTerm, page)),
-  fetchMovie: (id) => dispatch(fetchMovie(id)),
-  clearSelectedMovie: () => dispatch(clearSelectedMovie()),
-});
+const mapDispatchToProps = {
+  fetchMovies,
+  fetchMovie,
+  clearSelectedMovie,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

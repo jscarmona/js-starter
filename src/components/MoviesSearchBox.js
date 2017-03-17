@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import Section from './Section';
 
 class MoviesSearchBox extends Component {
-  getValue() {
-    return this.searchInput ? this.searchInput.value : null;
-  }
-
-  clearValue() {
-    this.searchInput.value = '';
-  }
-
-  focus() {
+  componentDidMount() {
     this.searchInput.focus();
   }
 
-  render() {
-    const { search } = this.props;
+  search = (e) => {
+    const { value } = this.searchInput;
 
+    if (e.keyCode === 13 && value) {
+      this.props.onSearch(value)
+        .then(() => { this.searchInput.value = ''; });
+    }
+  }
+
+  render() {
     return (
       <Section>
         <div className="control has-icon has-addons">
@@ -24,7 +23,7 @@ class MoviesSearchBox extends Component {
             className="input is-expanded is-large is-info"
             type="search"
             ref={(ref) => { this.searchInput = ref; }}
-            onKeyUp={search}
+            onKeyUp={this.search}
             placeholder="Search for a movie"
           />
           <i className="fa fa-search"></i>
