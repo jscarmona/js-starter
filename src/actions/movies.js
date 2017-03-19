@@ -28,33 +28,29 @@ export const clearSelectedMovie = () => ({
  * @param {Number} page
  * @returns {Function} A dispatch function
  */
-export const fetchMovies = (searchTerm, page) => (dispatch) => (
-  dispatch({
-    type: [MOVIES_FETCH_ALL_REQUEST, MOVIES_FETCH_ALL_SUCCESS, MOVIES_FETCH_ALL_ERROR],
-    payload: {
-      url: API_URL,
-      params: {
-        s: searchTerm,
-        type: 'movie',
-        page,
-      },
+export const fetchMovies = (searchTerm, page) => ({
+  type: [MOVIES_FETCH_ALL_REQUEST, MOVIES_FETCH_ALL_SUCCESS, MOVIES_FETCH_ALL_ERROR],
+  payload: {
+    url: API_URL,
+    params: {
+      s: searchTerm,
+      type: 'movie',
+      page,
     },
-  })
-);
+  },
+});
 
 /**
  * Fetch a single movie
  * @param {String} imdbId
  * @returns {Function} A dispatch function
  */
-export const fetchMovie = (imdbId) => (dispatch) => (
-  dispatch({
-    type: [MOVIES_FETCH_ONE_REQUEST, MOVIES_FETCH_ONE_SUCCESS, MOVIES_FETCH_ONE_ERROR],
-    payload: {
-      url: API_URL,
-      params: {
-        i: imdbId,
-      },
+export const fetchMovie = (imdbId) => ({
+  type: [MOVIES_FETCH_ONE_REQUEST, MOVIES_FETCH_ONE_SUCCESS, MOVIES_FETCH_ONE_ERROR],
+  payload: {
+    url: API_URL,
+    params: {
+      i: imdbId,
     },
-  })
-);
+  },
+});
